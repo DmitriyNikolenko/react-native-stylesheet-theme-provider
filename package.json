@@ -10,12 +10,14 @@
   "scripts": {
     "publish": "npm publish"
   },
+  "dependencies": {
+    "deep-map-object": "0.0.5"
+  },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-native": ">=0.59"
   },
   "devDependencies": {
-    "deep-map-object": "0.0.5",
     "prettier": "^2.0.5"
   }
 }

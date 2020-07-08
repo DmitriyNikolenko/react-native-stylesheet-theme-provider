@@ -1,7 +1,8 @@
 declare module 'react-native-stylesheet-theme-provider' {
     import React from "react";
-    import ReactNative from 'react-native'
+    import { StyleSheet } from 'react-native'
 
+    type RNStyleSheet = StyleSheet.NamedStyles<any>
     export type TTheme = Record<string, string | number>
     export type TThemeMap = Record<string, TTheme>
     export interface IThemeContext {
@@ -15,7 +16,7 @@ declare module 'react-native-stylesheet-theme-provider' {
         regExp?: RegExp
     }
     export interface IUseStyles {
-        (stylesheet: ReactNative.StyleSheet): ReactNative.StyleSheet
+        (stylesheet: RNStyleSheet): RNStyleSheet
     }
 
     const AxiosContext: React.Context<IThemeContext>
