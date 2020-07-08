@@ -1,8 +1,7 @@
 import React from "react"
 import deepMap from "deep-map-object"
-import ThemeContext from "./ThemeContext"
 
-export default function useStyles(stylesheet) {
+const ThemeContext = (ThemeContext) => (stylesheet) => {
 	const { themeValues, regExp } = React.useContext(ThemeContext)
 
 	return deepMap((value) => {
@@ -13,3 +12,5 @@ export default function useStyles(stylesheet) {
 		return newValue
 	})(stylesheet)
 }
+
+export default ThemeContext

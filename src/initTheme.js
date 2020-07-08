@@ -1,6 +1,6 @@
 import React from "react"
 import getThemeProvider from "./getThemeProvider"
-import useStyles from "./useStyles"
+import getUseStyles from "./getUseStyles"
 import getUseTheme from "./getUseTheme"
 
 const defaultRegExp = /^var\(--(.*?)\)$/ // CSS custom properties format. Example: "color: var(--customProp)"
@@ -24,7 +24,7 @@ export default function initTheme({
 			regExp,
 			Context: ThemeContext,
 		}),
-		useStyles,
+		useStyles: getUseStyles(ThemeContext),
 		useTheme: getUseTheme(ThemeContext),
 	}
 }
