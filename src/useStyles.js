@@ -7,7 +7,9 @@ export default function useStyles(stylesheet) {
 
 	return deepMap((value) => {
 		const match = String(value).match(regExp)
-		const newValue = Array.isArray(match) ? themeValues[match[1]] : value
+		const newValue = Array.isArray(match)
+			? themeValues[match[1]] || value
+			: value
 		return newValue
 	})(stylesheet)
 }

@@ -9,13 +9,11 @@ const ThemeProvider = ({
 	defaultThemeName = "default",
 	regExp = defaultRegExp,
 }) => {
-	const defaultTheme = themeMap[defaultThemeName]
-	const [theme, setTheme] = React.useState(defaultTheme)
+	const [theme, setTheme] = React.useState(defaultThemeName)
+	const themeValues = themeMap[theme] || {}
 
 	return (
-		<ThemeContext.Provider
-			value={{ themeValues: themeMap[theme], theme, setTheme, regExp }}
-		>
+		<ThemeContext.Provider value={{ themeValues, theme, setTheme, regExp }}>
 			{children}
 		</ThemeContext.Provider>
 	)
