@@ -10,40 +10,36 @@ Use dynamic theme changing with react native stylesheets.
 -   can be used with react-native-css-modules
 -   have typescript typings
 
-# API
+# How to establish
 
-## ThemeProvider
+## Step 1. Create
 
 ```jsx
-<ThemeProvider
-	themeMap={{
+import { initTheme } from 'react-native-stylesheet-theme-provider'
+
+const { ThemeProvider, useStyles, useTheme } = initTheme({
+    themeMap: {
 		green: { primaryColor: "#CDDC39", textColor: "#F0F4C3" },
 		amber: { primaryColor: "#FFC107", textColor: "#FFECB3" },
-	}}
-	defaultThemeName="green"
-	// regExp = /^var\((.*?)\)$/ // CSS custom properties format by default. Example: "color: var(--customProp)"
->
+	},
+    defaultThemeName: "green".
+    // regExp = /^var\((.*?)\)$/ // CSS custom properties format by default. Example: "color: var(--customProp)"
+})
+```
+
+## Step 2. Wrap App to ThemeProvider
+
+```jsx
+<ThemeProvider>
 	<SafeAreaView>
 		<Button>Hello</Button>
 	</SafeAreaView>
 </ThemeProvider>
 ```
 
+# How to use
+
 ## useStyles
-
-```jsx
-const styles = useStyles(stylesheet)
-```
-
-## useTheme
-
-```jsx
-const { themeValues, theme, setTheme } = useTheme()
-```
-
-# Example
-
-You can get acquainted with an examples in example directory.
 
 ```jsx
 const stylesheet = StyleSheet.create({
@@ -55,20 +51,35 @@ const stylesheet = StyleSheet.create({
 		color: "var(--secondaryColor)",
 	},
 })
-
-function Button({ children: label }) {
-	const styles = useStyles(stylesheet)
-	const { theme, setTheme } = useTheme()
-
-	return (
-		<TouchableWithoutFeedback
-			style={styles.primaryColor}
-			onPress={() =>
-				setTheme((theme) => (theme === "green" ? "amber" : "green"))
-			}
-		>
-			<Text style={styles.textColor}>{label}</Text>
-		</TouchableWithoutFeedback>
-	)
-}
+const styles = useStyles(stylesheet)
 ```
+
+## useTheme
+
+```jsx
+const { themeValues, theme, setTheme } = useTheme()
+// themeValues - set of values for current theme
+// theme - current theme name
+// setTheme - set current theme name with value or function returns value
+```
+
+# Typescript
+
+You can pass types for theme map and union with theme names in order to make typings for all handlers.
+
+```tsx
+import { initTheme } from 'react-native-stylesheet-theme-provider'
+
+const { ThemeProvider, useStyles, useTheme } = initTheme<{ primaryColor: string, textColor: string, }, 'green' | 'amber'>({
+    themeMap: {
+		green: { primaryColor: "#CDDC39", textColor: "#F0F4C3" },
+		amber: { primaryColor: "#FFC107", textColor: "#FFECB3" },
+	},
+    defaultThemeName: "green".
+    // regExp = /^var\((.*?)\)$/ // CSS custom properties format by default. Example: "color: var(--customProp)"
+})
+```
+
+# Examples
+
+You can get acquainted with an examples in example directory.
