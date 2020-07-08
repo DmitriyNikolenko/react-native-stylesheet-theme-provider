@@ -1,8 +1,9 @@
 import React from "react"
 
 const ThemeContext = React.createContext({
-	theme: {},
+	theme: "default",
 	setTheme: (theme) => null,
+	themeValues: {},
 	regExp: new RegExp(""),
 })
 

@@ -6,8 +6,9 @@ declare module 'react-native-stylesheet-theme-provider' {
     export type TTheme = Record<string, string | number>
     export type TThemeMap = Record<string, TTheme>
     export interface IThemeContext {
-        theme: TTheme,
-        setTheme: React.Dispatch<TTheme>,
+        theme: TTheme
+        setTheme: React.Dispatch<keyof TThemeMap>
+        themeValues: TThemeMap[keyof TThemeMap]
         regExp: RegExp
     }
     export interface IThemeProvider {
@@ -22,5 +23,5 @@ declare module 'react-native-stylesheet-theme-provider' {
     const AxiosContext: React.Context<IThemeContext>
 	export const ThemeProvider: React.FC<IThemeProvider>
 	export const useStyles: IUseStyles
-	export const useTheme: Pick<IThemeContext, 'theme' | 'setTheme'>
+	export const useTheme: () => [IThemeContext['theme'], IThemeContext['setTheme']]
 }
