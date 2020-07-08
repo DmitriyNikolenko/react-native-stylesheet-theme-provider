@@ -1,7 +1,8 @@
 import React from "react"
-import ThemeContext from "./ThemeContext"
 
-export default function useTheme() {
+const getUseTheme = (ThemeContext) => () => {
 	const { themeValues, theme, setTheme } = React.useContext(ThemeContext)
 	return { themeValues, theme, setTheme }
 }
+
+export default getUseTheme

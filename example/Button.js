@@ -6,7 +6,22 @@ import {
 	Text,
 	StyleSheet,
 } from "react-native"
-import { ThemeProvider, useStyles, useTheme } from "../src/index"
+import { initTheme } from "../src/index"
+
+const themeMap = {
+	green: {
+		primaryColor: "#CDDC39",
+		textColor: "#F0F4C3",
+	},
+	amber: {
+		primaryColor: "#FFC107",
+		textColor: "#FFECB3",
+	},
+}
+const { ThemeProvider, useStyles, useTheme } = initTheme({
+	themeMap,
+	defaultThemeName: "green",
+})
 
 const stylesheet = StyleSheet.create({
 	button: {
@@ -34,20 +49,9 @@ function Button({ children: label }) {
 	)
 }
 
-const themeMap = {
-	green: {
-		primaryColor: "#CDDC39",
-		textColor: "#F0F4C3",
-	},
-	amber: {
-		primaryColor: "#FFC107",
-		textColor: "#FFECB3",
-	},
-}
-
 function Example() {
 	return (
-		<ThemeProvider themeMap={themeMap} defaultThemeName="green">
+		<ThemeProvider>
 			<SafeAreaView>
 				<Button>Hello</Button>
 			</SafeAreaView>
