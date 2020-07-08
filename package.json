@@ -1,0 +1,21 @@
+{
+  "name": "react-native-stylesheet-theme-provider",
+  "version": "0.1.0",
+  "description": "Use dynamic theme changing with react native stylesheets.",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "repository": "https://github.com/DmitriyNikolenko/react-native-stylesheet-theme-provider.git",
+  "author": "Dmitriy Nikolenko <dmitriy@nikolenko@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "publish": "npm publish"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.59"
+  },
+  "devDependencies": {
+    "deep-map-object": "0.0.5",
+    "prettier": "^2.0.5"
+  }
+}
