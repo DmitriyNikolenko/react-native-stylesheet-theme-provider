@@ -5,26 +5,23 @@ declare module 'react-native-stylesheet-theme-provider' {
     type RNStyleSheet = StyleSheet.NamedStyles<any>
 
     export interface IUseStyles {
-        (stylesheet: RNStyleSheet): RNStyleSheet
+        <T extends RNStyleSheet>(stylesheet: T): T
     }
     export interface IUseTheme<ThemeMap, ThemeNames> {
-        (stylesheet: RNStyleSheet): {
+        (): {
             theme: ThemeNames
-            setTheme: React.Dispatch<ThemeNames>
+            setTheme: (theme: ThemeNames | ((theme: ThemeNames) => ThemeNames)) => void
             themeValues: ThemeMap
         }
     }
-    export interface IInitTheme<ThemeMap, ThemeNames> {
-        (themeConfig: {
-            themeMap: TThemeMap
-            defaultThemeName: keyof TThemeMap
-            regExp?: RegExp
-        }): {
-            ThemeProvider: React.FC<void>
-            useStyles: IUseStyles
-            useTheme: IUseTheme<ThemeMap, ThemeNames>
-        }
-    }
 
-    export const initTheme: IInitTheme
+    export const initTheme: <ThemeMap, ThemeNames extends string, >(themeConfig: {
+        themeMap: Record<ThemeNames, ThemeMap>
+        defaultThemeName: ThemeNames
+        regExp?: RegExp
+    }) => {
+        ThemeProvider: React.FC<void>
+        useStyles: IUseStyles
+        useTheme: IUseTheme<ThemeMap, ThemeNames>
+    }
 }
