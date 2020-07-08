@@ -38,7 +38,7 @@ const styles = useStyles(stylesheet)
 ## useTheme
 
 ```jsx
-const { themeValues, theme, setTheme } = useTheme(stylesheet)
+const { themeValues, theme, setTheme } = useTheme()
 ```
 
 # Example
@@ -58,7 +58,7 @@ const stylesheet = StyleSheet.create({
 
 function Button({ children: label }) {
 	const styles = useStyles(stylesheet)
-	const { theme, setTheme } = useTheme(stylesheet)
+	const { theme, setTheme } = useTheme()
 
 	return (
 		<TouchableWithoutFeedback

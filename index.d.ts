@@ -3,25 +3,28 @@ declare module 'react-native-stylesheet-theme-provider' {
     import { StyleSheet } from 'react-native'
 
     type RNStyleSheet = StyleSheet.NamedStyles<any>
-    export type TTheme = Record<string, string | number>
-    export type TThemeMap = Record<string, TTheme>
-    export interface IThemeContext {
-        theme: TTheme
-        setTheme: React.Dispatch<keyof TThemeMap>
-        themeValues: TThemeMap[keyof TThemeMap]
-        regExp: RegExp
-    }
-    export interface IThemeProvider {
-        themeMap: TThemeMap
-        defaultThemeName: keyof TThemeMap
-        regExp?: RegExp
-    }
+
     export interface IUseStyles {
         (stylesheet: RNStyleSheet): RNStyleSheet
     }
+    export interface IUseTheme<ThemeMap, ThemeNames> {
+        (stylesheet: RNStyleSheet): {
+            theme: ThemeNames
+            setTheme: React.Dispatch<ThemeNames>
+            themeValues: ThemeMap
+        }
+    }
+    export interface IInitTheme<ThemeMap, ThemeNames> {
+        (themeConfig: {
+            themeMap: TThemeMap
+            defaultThemeName: keyof TThemeMap
+            regExp?: RegExp
+        }): {
+            ThemeProvider: React.FC<void>
+            useStyles: IUseStyles
+            useTheme: IUseTheme<ThemeMap, ThemeNames>
+        }
+    }
 
-    const AxiosContext: React.Context<IThemeContext>
-	export const ThemeProvider: React.FC<IThemeProvider>
-	export const useStyles: IUseStyles
-	export const useTheme: () => Pick<IThemeContext, 'theme' | 'setTheme' | 'themeValues'>
+    export const initTheme: IInitTheme
 }
