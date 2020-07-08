@@ -23,5 +23,5 @@ declare module 'react-native-stylesheet-theme-provider' {
     const AxiosContext: React.Context<IThemeContext>
 	export const ThemeProvider: React.FC<IThemeProvider>
 	export const useStyles: IUseStyles
-	export const useTheme: () => [IThemeContext['theme'], IThemeContext['setTheme']]
+	export const useTheme: () => Pick<IThemeContext, 'theme' | 'setTheme' | 'themeValues'>
 }

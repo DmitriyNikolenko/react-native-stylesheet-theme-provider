@@ -20,7 +20,7 @@ const stylesheet = StyleSheet.create({
 
 function Button({ children: label }) {
 	const styles = useStyles(stylesheet)
-	const [theme, setTheme] = useTheme(stylesheet)
+	const { setTheme } = useTheme()
 
 	return (
 		<TouchableWithoutFeedback
