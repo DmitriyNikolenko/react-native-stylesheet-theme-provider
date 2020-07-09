@@ -3,7 +3,7 @@ import getThemeProvider from "./getThemeProvider"
 import getUseStyles from "./getUseStyles"
 import getUseTheme from "./getUseTheme"
 
-const defaultRegExp = /^var\(--(.*?)\)$/ // CSS custom properties format. Example: "color: var(--customProp)"
+const defaultRegExp = /var\(--(.*?)\)/ // CSS custom properties format. Example: "color: var(--customProp)"
 
 export default function initTheme({
 	themeMap,

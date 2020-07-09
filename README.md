@@ -76,7 +76,7 @@ const { ThemeProvider, useStyles, useTheme } = initTheme<{ primaryColor: string,
 		amber: { primaryColor: "#FFC107", textColor: "#FFECB3" },
 	},
     defaultThemeName: "green".
-    // regExp = /^var\((.*?)\)$/ // CSS custom properties format by default. Example: "color: var(--customProp)"
+    // regExp = /var\(--(.*?)\)/ // CSS custom properties format by default. Example: "color: var(--customProp)"
 })
 ```
 

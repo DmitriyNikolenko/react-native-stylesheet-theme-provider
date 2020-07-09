@@ -20,7 +20,7 @@ declare module 'react-native-stylesheet-theme-provider' {
         defaultThemeName: ThemeNames
         regExp?: RegExp
     }) => {
-        ThemeProvider: React.FC<void>
+        ThemeProvider: React.FC<any>
         useStyles: IUseStyles
         useTheme: IUseTheme<ThemeMap, ThemeNames>
     }

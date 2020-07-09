@@ -5,11 +5,10 @@ const ThemeContext = (ThemeContext) => (stylesheet) => {
 	const { themeValues, regExp } = React.useContext(ThemeContext)
 
 	return deepMap((value) => {
-		const match = String(value).match(regExp)
-		const newValue = Array.isArray(match)
-			? themeValues[match[1]] || value
-			: value
-		return newValue
+		if (typeof value !== "string") return value
+		return value.replace(regExp, (match, propertyName) =>
+			propertyName in themeValues ? themeValues[propertyName] : value
+		)
 	})(stylesheet)
 }
 
