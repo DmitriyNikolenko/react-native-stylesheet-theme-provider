@@ -17,10 +17,9 @@ declare module 'react-native-stylesheet-theme-provider' {
 
     export const initTheme: <ThemeMap, ThemeNames extends string, >(themeConfig: {
         themeMap: Record<ThemeNames, ThemeMap>
-        defaultThemeName: ThemeNames
         regExp?: RegExp
     }) => {
-        ThemeProvider: React.FC<any>
+        ThemeProvider: React.FC<{ themeName?: ThemeNames }>
         useStyles: IUseStyles
         useTheme: IUseTheme<ThemeMap, ThemeNames>
     }

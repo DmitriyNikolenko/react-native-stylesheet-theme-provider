@@ -7,7 +7,7 @@ const defaultRegExp = /var\(--(.*?)\)/ // CSS custom properties format. Example:
 
 export default function initTheme({
 	themeMap,
-	defaultThemeName = "default",
+	defaultThemeName,
 	regExp = defaultRegExp,
 }) {
 	const ThemeContext = React.createContext({
